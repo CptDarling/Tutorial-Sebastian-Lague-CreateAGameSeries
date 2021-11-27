@@ -188,7 +188,7 @@ MonoBehaviour:
   waves:
   - entityCount: 2
     timeBetweenSpawns: 1
-  - entityCount: 5
+  - entityCount: 6
     timeBetweenSpawns: 0.75
   - entityCount: 10
     timeBetweenSpawns: 0.5

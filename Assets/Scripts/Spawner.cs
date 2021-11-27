@@ -19,7 +19,7 @@ public class Spawner : MonoBehaviour
 
     void Start()
     {
-        NextWave();
+        StartCoroutine(NextWave());
     }
 
     void Update()
@@ -37,22 +37,23 @@ public class Spawner : MonoBehaviour
 
     private void OnEntityBirth()
     {
-        print("An entity has been born, hurray");
+        print("An entity has been born, hurray!");
         entitiesRemainingAlive++;
     }
 
     void OnEntityDeath()
     {
-        print("Entity has passed away, how sad");
+        print("Entity has passed away, how sad :(");
         entitiesRemainingAlive--;
         if (entitiesRemainingAlive == 0)
         {
-            NextWave();
+            StartCoroutine(NextWave());
         }
     }
 
-    void NextWave()
+    IEnumerator NextWave()
     {
+        yield return new WaitForSeconds(5);
         currentWaveNumber++;
         print($"Wave: {currentWaveNumber}");
         if (currentWaveNumber - 1 < waves.Length)
