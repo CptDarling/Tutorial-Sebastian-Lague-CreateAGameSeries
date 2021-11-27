@@ -7,8 +7,8 @@ public class LivingEntity : MonoBehaviour, IDamageable, ILifeTime
     [SerializeField] float startingHealth;
     [SerializeField] float lifeTime;
 
-    public event Action OnDeath;
     public event Action OnBirth;
+    public event Action OnDeath;
 
     // Protected so that classes that derive from this class 
     // can get to health but other classes and the inspector can't.
@@ -33,8 +33,7 @@ public class LivingEntity : MonoBehaviour, IDamageable, ILifeTime
         }
     }
 
-
-    public void TakeHit(float damage, RaycastHit hit)
+    public void TakeDamage(float damage)
     {
         health -= damage;
 
@@ -42,6 +41,11 @@ public class LivingEntity : MonoBehaviour, IDamageable, ILifeTime
         {
             Die();
         }
+    }
+
+    public void TakeHit(float damage, RaycastHit hit)
+    {
+        TakeDamage(damage);
     }
 
     public void Die()

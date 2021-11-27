@@ -11,10 +11,14 @@ public class Projectile : MonoBehaviour
 
     float speed = 10f;
     float damage = 1f;
+    float skinWidth = 0.1f; // Used to compensate for movement of collider plus movement of projectile.
 
     private void Start()
     {
         Destroy(gameObject, lifeTime);
+
+        Collider[] initialCollisions = Physics.OverlapSphere(transform.position, 0.1f, collisionMask);
+        if (initialCollisions.Length > 0) OnHitOject(initialCollisions[0]);
     }
 
     internal void SetSpeed(float newSpeed)
@@ -34,7 +38,7 @@ public class Projectile : MonoBehaviour
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, moveDistance, collisionMask, QueryTriggerInteraction.Collide))
+        if (Physics.Raycast(ray, out hit, moveDistance + skinWidth, collisionMask, QueryTriggerInteraction.Collide))
         {
             OnHitOject(hit);
         }
@@ -49,4 +53,15 @@ public class Projectile : MonoBehaviour
         }
         GameObject.Destroy(gameObject);
     }
+
+    void OnHitOject(Collider c)
+    {
+        IDamageable damageable = c.GetComponent<IDamageable>();
+        if (damageable != null)
+        {
+            damageable.TakeDamage(damage);
+        }
+        GameObject.Destroy(gameObject);
+    }
+
 }
