@@ -22,8 +22,12 @@ public class Player : LivingEntity
         viewCamera = Camera.main;
     }
 
-    void Update()
+    protected override void Update()
     {
+        // The entity might pass away during this update.
+        base.Update();
+        if (dead) return;
+
         // Movement input
         Vector3 moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
         Vector3 moveVelocity = moveInput.normalized * moveSpeed; // Get the direction and multiply by speed.
