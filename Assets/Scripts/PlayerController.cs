@@ -11,12 +11,12 @@ public class PlayerController : MonoBehaviour
     Vector3 velocity;
     Quaternion rotation;
 
-    private void Start()
+    void Start()
     {
         rb = GetComponent<Rigidbody>();
     }
 
-    private void FixedUpdate()
+    void FixedUpdate()
     {
         rb.MovePosition(rb.position + velocity * Time.fixedDeltaTime);
     }

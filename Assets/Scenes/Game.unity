@@ -478,6 +478,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4031486530115013620, guid: f1c6fb4793bb7b240ae8f496fccc6df7, type: 3}
+      propertyPath: startingHealth
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4031486530115013631, guid: f1c6fb4793bb7b240ae8f496fccc6df7, type: 3}
       propertyPath: m_Name
       value: Player
@@ -556,6 +560,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3976409989499256027, guid: c22c8f633ec1c6741a2dd2020937d621, type: 3}
+      propertyPath: startingHealth
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4465423230657211962, guid: c22c8f633ec1c6741a2dd2020937d621, type: 3}
       propertyPath: m_Name
       value: Enemy

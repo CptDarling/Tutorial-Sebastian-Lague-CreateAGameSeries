@@ -10,6 +10,7 @@ public class Projectile : MonoBehaviour
     [SerializeField] float lifeTime = 3f;
 
     float speed = 10f;
+    float damage = 1f;
 
     private void Start()
     {
@@ -33,7 +34,7 @@ public class Projectile : MonoBehaviour
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, moveDistance,collisionMask,QueryTriggerInteraction.Collide))
+        if (Physics.Raycast(ray, out hit, moveDistance, collisionMask, QueryTriggerInteraction.Collide))
         {
             OnHitOject(hit);
         }
@@ -41,7 +42,11 @@ public class Projectile : MonoBehaviour
 
     void OnHitOject(RaycastHit hit)
     {
-        print(hit.collider.gameObject.name);
+        IDamageable damageable = hit.collider.GetComponent<IDamageable>();
+        if (damageable != null)
+        {
+            damageable.TakeHit(damage, hit);
+        }
         GameObject.Destroy(gameObject);
     }
 }
