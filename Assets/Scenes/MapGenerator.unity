@@ -246,8 +246,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePrefab: {fileID: 3701776245513724901, guid: 175c88436dc4407419e5aabb7f39c645, type: 3}
+  obstaclePrefab: {fileID: 8303456677535151353, guid: d660b32f218b78f4c9d5a57f9300ac5b, type: 3}
   mapSize: {x: 10, y: 10}
-  outlinePercent: 0.15
+  outlinePercent: 0.165
+  seed: 10
 --- !u!4 &1623339526
 Transform:
   m_ObjectHideFlags: 0
